@@ -1,0 +1,1577 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NAZMEEN — HER OWN UNIVERSE</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap');
+
+:root {
+  --pink:#ff2a74;
+  --pink2:#ff82b0;
+  --bg:#08070b;
+  --white:#fff4f8;
+  --muted:#c0aeb9;
+}
+
+* { box-sizing:border-box; }
+
+body {
+  margin:0;
+  min-height:100vh;
+  background:
+    radial-gradient(circle at 10% 15%,#48102b 0,transparent 35%),
+    radial-gradient(circle at 90% 80%,#270c30 0,transparent 35%),
+    var(--bg);
+  color:var(--white);
+  font-family:'DM Sans',sans-serif;
+}
+
+header {
+  padding:22px 7%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-bottom:1px solid #ffffff12;
+}
+
+.logo {
+  color:var(--pink2);
+  font-weight:800;
+  letter-spacing:4px;
+  font-size:13px;
+}
+
+.top-label {
+  color:#c9a9b9;
+  font-size:11px;
+  letter-spacing:2px;
+}
+
+main {
+  width:min(1100px,92%);
+  margin:45px auto;
+  min-height:70vh;
+}
+
+.progress-info {
+  display:flex;
+  justify-content:space-between;
+  color:var(--pink2);
+  font-size:12px;
+  letter-spacing:2px;
+  margin-bottom:12px;
+}
+
+.progress-track {
+  height:4px;
+  background:#ffffff18;
+  border-radius:20px;
+  overflow:hidden;
+}
+
+.progress-fill {
+  height:100%;
+  width:0;
+  background:linear-gradient(90deg,var(--pink),#ffb1ce);
+  transition:width .5s ease;
+  box-shadow:0 0 15px var(--pink);
+}
+
+.card {
+  margin-top:35px;
+  padding:clamp(25px,6vw,55px);
+  border:1px solid #ff2a7438;
+  border-radius:25px;
+  background:linear-gradient(145deg,#1b111bdf,#0d0b12f5);
+  box-shadow:0 20px 70px #0008,0 0 30px #ff2a7410;
+  animation:appear .6s ease;
+}
+
+@keyframes appear {
+  from {opacity:0;transform:translateY(18px)}
+  to {opacity:1;transform:translateY(0)}
+}
+
+.eyebrow {
+  color:var(--pink2);
+  font-size:11px;
+  letter-spacing:4px;
+  text-transform:uppercase;
+  margin-bottom:18px;
+}
+
+h1,h2 {
+  font-family:'Playfair Display',serif;
+  line-height:1.2;
+}
+
+h1 {
+  font-size:clamp(35px,7vw,62px);
+  margin:0 0 20px;
+}
+
+h2 {
+  font-size:clamp(27px,5vw,40px);
+  margin:0 0 20px;
+}
+
+p {
+  color:var(--muted);
+  line-height:1.8;
+  font-size:15px;
+}
+
+.highlight {color:var(--pink2)}
+.center {text-align:center}
+
+.btn {
+  border:0;
+  border-radius:30px;
+  padding:14px 25px;
+  background:linear-gradient(110deg,#ff2a74,#ff70a5);
+  color:white;
+  font-size:14px;
+  font-weight:700;
+  cursor:pointer;
+  box-shadow:0 7px 25px #ff2a7440;
+  transition:.25s;
+  margin-top:20px;
+}
+
+.btn:hover {
+  transform:translateY(-3px);
+  box-shadow:0 10px 35px #ff2a7466;
+}
+
+.btn.secondary {
+  background:#ffffff10;
+  border:1px solid #ff2a7460;
+  box-shadow:none;
+}
+
+.options {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:12px;
+  margin-top:25px;
+}
+
+.option {
+  padding:17px;
+  background:#ffffff09;
+  border:1px solid #ffffff20;
+  border-radius:15px;
+  color:white;
+  cursor:pointer;
+  transition:.25s;
+  text-align:left;
+  font-family:inherit;
+  font-size:14px;
+}
+
+.option:hover {
+  border-color:var(--pink);
+  background:#ff2a7415;
+  transform:translateY(-3px);
+}
+
+.option:disabled {
+  opacity:.55;
+  cursor:default;
+  transform:none;
+}
+
+.result {
+  margin-top:22px;
+  padding:20px;
+  border:1px solid #ff2a7450;
+  border-radius:15px;
+  background:#ff2a7410;
+  color:var(--pink2);
+  line-height:1.7;
+  display:none;
+}
+
+.big-heart {
+  font-size:75px;
+  animation:heartbeat 1.5s infinite;
+  display:inline-block;
+}
+
+@keyframes heartbeat {
+  0%,100% {transform:scale(1)}
+  50% {transform:scale(1.15)}
+}
+
+.game-area {
+  min-height:180px;
+  border:1px dashed #ff2a7470;
+  border-radius:18px;
+  margin-top:20px;
+  padding:20px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:15px;
+}
+
+.heart-target {
+  font-size:42px;
+  cursor:pointer;
+  user-select:none;
+  transition:.2s;
+}
+
+.heart-target:hover {transform:scale(1.2)}
+.gift {
+  font-size:75px;
+  cursor:pointer;
+  display:inline-block;
+  transition:.4s;
+}
+
+.gift:hover {transform:rotate(-10deg) scale(1.1)}
+
+.battle-intro {max-width:650px;margin:auto}
+
+.battle-arena {
+  margin:30px 0;
+  padding:25px;
+  border:1px solid #ff2a7440;
+  border-radius:20px;
+  background:radial-gradient(circle at 50% 0%,#ff2a7418,transparent 65%),#100b12;
+}
+
+.battle-names {
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:25px;
+  flex-wrap:wrap;
+  margin-bottom:20px;
+}
+
+.battle-person {
+  min-width:115px;
+  padding:17px;
+  border:1px solid #ff2a7445;
+  border-radius:15px;
+  background:#ffffff08;
+}
+
+.battle-person strong {
+  display:block;
+  color:var(--pink2);
+  font-size:17px;
+  margin-top:7px;
+}
+
+.battle-vs {
+  color:var(--pink);
+  font-weight:800;
+  font-size:20px;
+}
+
+.battle-question {
+  color:white;
+  font-size:20px;
+  font-weight:700;
+  margin:22px 0;
+}
+
+.battle-options {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px;
+}
+
+.battle-options button {
+  padding:16px 12px;
+  border-radius:13px;
+  border:1px solid #ffffff24;
+  background:#ffffff09;
+  color:white;
+  cursor:pointer;
+  font-family:inherit;
+  font-size:14px;
+  transition:.2s;
+}
+
+.battle-options button:hover {
+  border-color:var(--pink);
+  background:#ff2a7418;
+}
+
+.battle-options button:disabled {
+  opacity:.55;
+  cursor:default;
+}
+
+.battle-result {
+  display:none;
+  margin-top:20px;
+  color:var(--pink2);
+  line-height:1.8;
+  padding:18px;
+  border-radius:14px;
+  background:#ff2a7410;
+  border:1px solid #ff2a7440;
+}
+
+.gallery-page {width:100%}
+
+.gallery-topline {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+  border-bottom:1px solid #ffffff24;
+  padding-bottom:15px;
+  margin-bottom:30px;
+}
+
+.gallery-topline span {
+  color:#a9909e;
+  font-size:10px;
+  letter-spacing:3px;
+}
+
+.gallery-intro {margin:0 0 30px}
+.gallery-intro .eyebrow {margin-bottom:12px}
+
+.gallery-title {
+  font-family:'Playfair Display',serif;
+  font-size:clamp(43px,8vw,88px);
+  line-height:.98;
+  letter-spacing:-2px;
+  margin:0;
+  text-transform:uppercase;
+}
+
+.gallery-title span {
+  color:var(--pink2);
+  display:block;
+  font-style:italic;
+}
+
+.gallery-description {
+  max-width:540px;
+  font-size:14px;
+  margin-top:20px;
+  line-height:1.9;
+}
+
+.hero-photo {
+  position:relative;
+  width:100%;
+  height:clamp(330px,57vw,610px);
+  overflow:hidden;
+  background:#170c15;
+  cursor:pointer;
+  margin:35px 0 45px;
+  border:1px solid #ff2a7450;
+}
+
+.hero-photo img {
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center 35%;
+  display:block;
+  transition:transform 1s ease;
+}
+
+.hero-photo:hover img {transform:scale(1.035)}
+
+.hero-photo::after {
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(0deg,#08070be8 0%,#08070b45 28%,transparent 65%);
+  pointer-events:none;
+}
+
+.hero-photo-info {
+  position:absolute;
+  z-index:2;
+  bottom:28px;
+  left:30px;
+  right:30px;
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  gap:15px;
+}
+
+.hero-photo-info h3 {
+  font-family:'Playfair Display',serif;
+  font-size:clamp(28px,5vw,48px);
+  margin:0;
+  color:white;
+  font-weight:500;
+}
+
+.hero-photo-info span {
+  color:#ffd1e1;
+  font-size:10px;
+  letter-spacing:3px;
+}
+
+.hero-number {
+  color:white;
+  font-size:12px;
+  letter-spacing:3px;
+}
+
+.gallery-section-heading {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-bottom:1px solid #ffffff24;
+  padding-bottom:14px;
+  margin-bottom:22px;
+}
+
+.gallery-section-heading h3 {
+  margin:0;
+  font-size:12px;
+  letter-spacing:3px;
+  color:#ffd0e1;
+  font-weight:600;
+}
+
+.gallery-section-heading span {
+  font-size:10px;
+  color:#927e8a;
+  letter-spacing:2px;
+}
+
+.editorial-grid {
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  gap:25px;
+  align-items:start;
+}
+
+.editorial-column {
+  display:flex;
+  flex-direction:column;
+  gap:28px;
+}
+
+.editorial-photo {
+  position:relative;
+  overflow:hidden;
+  background:#180d16;
+  cursor:pointer;
+  border:1px solid #ffffff1c;
+}
+
+.editorial-photo img {
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:transform .8s ease,filter .5s ease;
+}
+
+.editorial-photo:hover img {
+  transform:scale(1.045);
+  filter:brightness(1.08);
+}
+
+.editorial-photo::after {
+  content:"OPEN PHOTO ↗";
+  position:absolute;
+  right:14px;
+  bottom:14px;
+  color:white;
+  font-size:9px;
+  letter-spacing:2px;
+  padding:9px 12px;
+  background:#08070bc9;
+  opacity:0;
+  transition:.3s;
+}
+
+.editorial-photo:hover::after {opacity:1}
+
+.photo-tall {height:440px}
+.photo-wide {height:285px}
+.photo-medium {height:340px}
+.photo-short {height:260px}
+
+.editorial-note {
+  display:flex;
+  justify-content:space-between;
+  color:#9e8795;
+  font-size:10px;
+  letter-spacing:2px;
+  padding-top:10px;
+}
+
+.gallery-divider {
+  height:1px;
+  background:linear-gradient(90deg,transparent,#ff2a7470,transparent);
+  margin:45px 0 30px;
+}
+
+.gallery-closing {
+  text-align:center;
+  padding:35px 15px 10px;
+}
+
+.gallery-closing .closing-mark {
+  color:var(--pink);
+  font-size:24px;
+  margin-bottom:15px;
+}
+
+.gallery-closing h3 {
+  font-family:'Playfair Display',serif;
+  font-size:clamp(27px,5vw,43px);
+  line-height:1.25;
+  font-weight:500;
+  margin:0 auto 15px;
+  max-width:650px;
+}
+
+.gallery-closing h3 span {
+  color:var(--pink2);
+  font-style:italic;
+}
+
+.gallery-closing p {
+  max-width:540px;
+  margin:15px auto;
+  font-size:14px;
+}
+
+.gallery-signature {
+  margin-top:30px;
+  color:#ff9fc2;
+  font-size:11px;
+  letter-spacing:4px;
+}
+
+/* VOICE NOTE */
+
+.voice-note-box {
+  max-width:650px;
+  margin:45px auto 30px;
+  padding:30px 22px;
+  text-align:center;
+  border:1px solid #ff2a7470;
+  border-radius:22px;
+  background:linear-gradient(145deg,#ff2a7418,#ffffff05);
+  box-shadow:0 0 35px #ff2a7418;
+}
+
+.voice-icon {
+  font-size:42px;
+  margin-bottom:12px;
+}
+
+.voice-note-box h3 {
+  font-family:'Playfair Display',serif;
+  font-size:clamp(24px,5vw,34px);
+  color:#fff4f8;
+  margin:0 0 10px;
+}
+
+.voice-note-box p {
+  max-width:480px;
+  margin:10px auto 20px;
+}
+
+.voice-note-box audio {
+  width:100%;
+  max-width:430px;
+  accent-color:#ff2a74;
+}
+
+.voice-status {
+  color:#ff9fc2;
+  font-size:12px;
+  margin-top:15px;
+  letter-spacing:.5px;
+  line-height:1.6;
+}
+
+/* PHOTO VIEWER */
+
+.lightbox {
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:1000;
+  background:#050308f7;
+  align-items:center;
+  justify-content:center;
+  padding:55px 75px;
+  backdrop-filter:blur(12px);
+}
+
+.lightbox.active {display:flex}
+
+.lightbox img {
+  max-width:100%;
+  max-height:82vh;
+  object-fit:contain;
+  border:1px solid #ff2a7480;
+  box-shadow:0 0 45px #ff2a7430;
+  animation:appear .3s ease;
+}
+
+.close-lightbox {
+  position:absolute;
+  top:18px;
+  right:28px;
+  color:white;
+  font-size:38px;
+  cursor:pointer;
+  z-index:3;
+  background:none;
+  border:0;
+}
+
+.photo-nav {
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  width:48px;
+  height:48px;
+  border-radius:50%;
+  border:1px solid #ff2a7480;
+  color:white;
+  background:#ff2a7420;
+  font-size:25px;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.photo-nav:hover {background:var(--pink)}
+.photo-prev {left:20px}
+.photo-next {right:20px}
+
+.photo-counter {
+  position:absolute;
+  bottom:20px;
+  color:#ffc0d7;
+  font-size:11px;
+  letter-spacing:4px;
+}
+
+footer {
+  text-align:center;
+  color:#816d79;
+  padding:25px 25px 95px;
+  font-size:11px;
+  letter-spacing:2px;
+}
+
+.music-control {
+  position:fixed;
+  z-index:900;
+  left:50%;
+  bottom:16px;
+  transform:translateX(-50%);
+  display:flex;
+  align-items:center;
+  gap:12px;
+  max-width:calc(100% - 24px);
+  padding:9px 13px;
+  border:1px solid #ff2a7470;
+  border-radius:40px;
+  background:#100b12ed;
+  box-shadow:0 8px 30px #0009,0 0 20px #ff2a7420;
+  backdrop-filter:blur(12px);
+}
+
+.music-button {
+  border:0;
+  border-radius:25px;
+  padding:11px 16px;
+  color:white;
+  background:linear-gradient(110deg,#ff2a74,#ff70a5);
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:1px;
+  cursor:pointer;
+  white-space:nowrap;
+}
+
+.music-label {
+  color:#ffd0e1;
+  font-size:10px;
+  letter-spacing:1px;
+  white-space:nowrap;
+}
+
+@media(max-width:700px) {
+  main {margin:28px auto}
+  .card {padding:25px 18px}
+  header {padding:18px 5%}
+  .gallery-topline span {font-size:8px;letter-spacing:2px}
+  .gallery-title {font-size:clamp(40px,12vw,65px)}
+  .hero-photo {height:430px;margin:25px 0 35px}
+  .hero-photo-info {left:18px;right:18px;bottom:20px}
+  .hero-photo-info h3 {font-size:30px}
+  .editorial-grid {grid-template-columns:1fr 1fr;gap:12px}
+  .editorial-column {gap:18px}
+  .photo-tall {height:310px}
+  .photo-wide {height:205px}
+  .photo-medium {height:245px}
+  .photo-short {height:190px}
+  .editorial-note {font-size:8px;letter-spacing:1px}
+  .lightbox {padding:55px 45px}
+  .photo-nav {width:38px;height:38px;font-size:20px}
+  .photo-prev {left:5px}
+  .photo-next {right:5px}
+  .battle-options {grid-template-columns:1fr}
+}
+
+@media(max-width:420px) {
+  .music-control {gap:8px;padding:8px 10px}
+  .music-button {padding:10px 12px;font-size:10px}
+  .music-label {font-size:9px;letter-spacing:.5px}
+}
+
+@media(max-width:380px) {
+  .hero-photo {height:350px}
+  .photo-tall {height:260px}
+  .photo-wide {height:170px}
+  .photo-medium {height:210px}
+  .photo-short {height:155px}
+  .gallery-title {font-size:38px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">NAZMEEN ✦</div>
+  <div class="top-label">HER OWN UNIVERSE</div>
+</header>
+
+<main>
+  <div class="progress-info">
+    <span id="stepLabel">STEP 1 / 10</span>
+    <span id="percent">10%</span>
+  </div>
+
+  <div class="progress-track">
+    <div class="progress-fill" id="progress"></div>
+  </div>
+
+  <section class="card" id="content"></section>
+</main>
+
+<div class="lightbox" id="lightbox" onclick="closePhoto(event)">
+  <button class="close-lightbox" onclick="closePhoto(event)">&times;</button>
+  <button class="photo-nav photo-prev" onclick="changePhoto(-1,event)">‹</button>
+  <img id="largePhoto" src="" alt="Nazmeen photo">
+  <button class="photo-nav photo-next" onclick="changePhoto(1,event)">›</button>
+  <div class="photo-counter" id="photoCounter">01 / 06</div>
+</div>
+
+<div class="music-control">
+  <audio id="bgMusic" preload="auto" loop></audio>
+  <button class="music-button" id="musicButton" onclick="toggleMusic()">♫ PLAY MUSIC</button>
+  <span class="music-label" id="musicLabel">JAB TAK · STEP 1–9</span>
+</div>
+
+<footer>MADE WITH LOTS OF LOVE ✦ SUBHAN</footer>
+
+<script>
+let step = 0;
+const TOTAL_STEPS = 10;
+let stepComplete = false;
+let musicEnabled = false;
+let currentTrack = "";
+let voiceObserver = null;
+
+const content = document.getElementById("content");
+const bgMusic = document.getElementById("bgMusic");
+
+/* UPDATED SONGS */
+
+const TRACKS = {
+  journey: {
+    src:"jab tak.mpeg",
+    label:"JAB TAK · STEP 1–9",
+    startAt:0
+  },
+  gallery: {
+    src:"tera yrr.mpeg",
+    label:"TERA YAAR HOON MAIN · GALLERY",
+    startAt:0
+  }
+};
+
+function unlockNext(label="NEXT STEP ✨") {
+  stepComplete=true;
+  const slot=document.getElementById("nextSlot");
+  if(!slot) return;
+  slot.innerHTML=`<button class="btn" onclick="nextStep()">${label}</button>`;
+}
+
+function completeWelcome() {
+  unlockNext("START THE JOURNEY 💗");
+  musicEnabled=true;
+  setTrack("journey",true);
+  updateMusicButton();
+}
+
+function completeStep() {
+  unlockNext("NEXT STEP ✨");
+}
+
+function setTrack(trackName,shouldPlay=musicEnabled) {
+  const track=TRACKS[trackName];
+  if(!track) return;
+
+  if(currentTrack===trackName && bgMusic.src) {
+    musicEnabled=shouldPlay;
+    if(shouldPlay) {
+      bgMusic.play().catch(()=>{});
+    } else {
+      bgMusic.pause();
+    }
+    updateMusicButton();
+    return;
+  }
+
+  currentTrack=trackName;
+  musicEnabled=shouldPlay;
+  bgMusic.pause();
+  bgMusic.src=track.src;
+  bgMusic.load();
+
+  bgMusic.addEventListener("loadedmetadata",function() {
+    if(currentTrack!==trackName) return;
+    try {bgMusic.currentTime=track.startAt} catch(e){}
+    if(musicEnabled) bgMusic.play().catch(()=>{});
+    updateMusicButton();
+  },{once:true});
+
+  updateMusicButton();
+}
+
+function toggleMusic() {
+  if(musicEnabled && !bgMusic.paused) {
+    musicEnabled=false;
+    bgMusic.pause();
+  } else {
+    musicEnabled=true;
+    if(!currentTrack) {
+      setTrack(step===9?"gallery":"journey",true);
+    } else {
+      bgMusic.play().catch(()=>{
+        document.getElementById("musicLabel").textContent="CLICK PLAY AGAIN";
+      });
+    }
+  }
+  updateMusicButton();
+}
+
+function updateMusicButton() {
+  const button=document.getElementById("musicButton");
+  const label=document.getElementById("musicLabel");
+  if(!button || !label) return;
+
+  button.textContent=musicEnabled && !bgMusic.paused
+    ?"♫ PAUSE MUSIC":"♫ PLAY MUSIC";
+
+  label.textContent=TRACKS[currentTrack]?.label || "MUSIC READY";
+}
+
+const photos=[
+  "Nazmeen_photos/n1.jpg.jpg",
+  "Nazmeen_photos/n2.jpg.jpg",
+  "Nazmeen_photos/n3.jpg.jpg",
+  "Nazmeen_photos/n4.jpg.jpg",
+  "Nazmeen_photos/n5.jpg.jpg",
+  "Nazmeen_photos/n6.jpg.jpg"
+];
+
+let currentPhoto=0;
+
+function updateProgress() {
+  document.getElementById("stepLabel").textContent=
+    `STEP ${step+1} / ${TOTAL_STEPS}`;
+
+  document.getElementById("percent").textContent=
+    `${Math.round(((step+1)/TOTAL_STEPS)*100)}%`;
+
+  document.getElementById("progress").style.width=
+    `${((step+1)/TOTAL_STEPS)*100}%`;
+}
+
+function nextStep() {
+  if(!stepComplete || step>=TOTAL_STEPS-1) return;
+  step++;
+  stepComplete=false;
+  render();
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+/* VOICE NOTE FUNCTIONS */
+
+function stopVoiceNote() {
+  if(voiceObserver) {
+    voiceObserver.disconnect();
+    voiceObserver=null;
+  }
+
+  const voice=document.getElementById("voiceNote");
+  if(voice) {
+    voice.pause();
+    voice.currentTime=0;
+  }
+}
+
+function pauseBackgroundForVoice() {
+  bgMusic.pause();
+  musicEnabled=false;
+  updateMusicButton();
+}
+
+function setupVoiceNote() {
+  stopVoiceNote();
+
+  const voice=document.getElementById("voiceNote");
+  const box=document.getElementById("voiceNoteBox");
+  const status=document.getElementById("voiceStatus");
+
+  if(!voice || !box || !status) return;
+
+  voice.addEventListener("play",()=>{
+    pauseBackgroundForVoice();
+    status.textContent="Voice message playing... 💗";
+  });
+
+  voice.addEventListener("ended",()=>{
+    status.textContent="Voice message complete. Lots of love! 💗";
+  });
+
+  voice.addEventListener("error",()=>{
+    status.textContent="Voice note load nahi hua. Check karo vn.mp4 same folder mein hai.";
+  });
+
+  if("IntersectionObserver" in window) {
+    voiceObserver=new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting) {
+          voiceObserver.disconnect();
+          voiceObserver=null;
+
+          pauseBackgroundForVoice();
+
+          voice.play().then(()=>{
+            status.textContent="Voice message playing... 💗";
+          }).catch(()=>{
+            status.textContent="Autoplay block ho gaya. Voice note sunne ke liye Play dabao. 💗";
+          });
+        }
+      });
+    },{threshold:0.4});
+
+    voiceObserver.observe(box);
+  }
+}
+
+/* ALL 10 STEPS */
+
+function render() {
+  updateProgress();
+
+  const pages=[
+
+  /* STEP 1 */
+
+  `
+  <div class="center">
+    <div class="eyebrow">A little surprise for someone special</div>
+    <h1>Hey, <span class="highlight">Nazmeen!</span></h1>
+    <div class="big-heart">💗</div>
+    <p>Ye koi normal website nahi hai. Ye ek chhoti si duniya hai jo sirf tumhare liye banayi gayi hai.</p>
+    <p>Toh madam, ready ho apni special journey ke liye?</p>
+    <button class="btn" onclick="completeWelcome()">CHALO SHURU KAREIN ✨</button>
+    <div id="nextSlot"></div>
+  </div>
+  `,
+
+  /* STEP 2 */
+
+  `
+  <div class="center">
+    <div class="eyebrow">A special message</div>
+    <h2>Good Morning, <span class="highlight">Queen!</span> 🌸</h2>
+    <p>Subah ho ya shaam, tumhari smile hamesha special hai.</p>
+    <p>Bas ek baat yaad rakhna: apne aap ko kabhi kam mat samajhna. Tumhari apni ek alag hi value hai.</p>
+    <p>Aaj ka din tumhare liye khushiyon se bhara ho!</p>
+    <button class="btn" onclick="completeStep()">SAMJH GAYA 💗</button>
+    <div id="nextSlot"></div>
+  </div>
+  `,
+
+  /* STEP 3 */
+
+  `
+  <div class="center">
+    <div class="eyebrow">Let's check your mood</div>
+    <h2>Mood <span class="highlight">Scanner</span> 🔮</h2>
+    <p>Aaj madam ka mood kaisa hai? Sach sach batana!</p>
+    <div class="options">
+      <button class="option" onclick="mood('happy')">😄 Full happy</button>
+      <button class="option" onclick="mood('angry')">😤 Gussa aa raha</button>
+      <button class="option" onclick="mood('sad')">🥺 Thoda sad</button>
+      <button class="option" onclick="mood('sleepy')">😴 Neend aa rahi</button>
+    </div>
+    <div class="result" id="moodResult"></div>
+    <div id="nextSlot"></div>
+  </div>
+  `,
+
+  /* STEP 4 */
+
+  `
+  <div class="center">
+    <div class="eyebrow">Official compliment department</div>
+    <h2>Compliment <span class="highlight">Machine</span> 💌</h2>
+    <p>Ek button dabao aur apne liye ek special compliment unlock karo.</p>
+    <button class="btn" onclick="compliment()">UNLOCK COMPLIMENT 💗</button>
+    <div class="result" id="complimentResult"></div>
+    <div id="nextSlot"></div>
+  </div>
+  `,
+
+  /* STEP 5 */
+
+  `
+  <div class="center">
+    <div class="eyebrow">The ultimate sibling showdown</div>
+    <h2>SUBHAN <span class="highlight">VS</span> NAZMEEN 😂</h2>
+
+    <div class="battle-intro">
+      <p>Door rehte ho toh kya hua madam? Sibling wali nok-jhok ka competition toh banta hai!</p>
+      <p>Chalo dekhte hain is battle mein kaun jeetega. Waise winner ka decision thoda biased ho sakta hai. 😂</p>
+    </div>
+
+    <div class="battle-arena">
+      <div class="battle-names">
+        <div class="battle-person">
+          <div style="font-size:30px">😎</div>
+          <strong>SUBHAN</strong>
+        </div>
+        <div class="battle-vs">VS</div>
+        <div class="battle-person">
+          <div style="font-size:30px">👑</div>
+          <strong>NAZMEEN</strong>
+        </div>
+      </div>
+
+      <div class="battle-question" id="battleQuestion">
+        Q1. Is website ka asli boss kaun hai?
+      </div>
+
+      <div class="battle-options" id="battleOptions">
+        <button onclick="answerBattle(0)">Subhan 😎</button>
+        <button onclick="answerBattle(1)">Nazmeen 👑</button>
+      </div>
+
+      <div class="battle-result" id="battleResult"></div>
+    </div>
+
+    <p style="font-size:12px">Warning: Is game mein cheating allowed hai... lekin sirf Nazmeen ke liye! 😂</p>
+    <div id="nextSlot"></div>
+  </div>
+  `,
+
+  /* STEP 6 */
+
+  `
+  <div class="center">
+    <div class="eyebrow">Let's see how well you know yourself</div>
+    <h2>Queen <span class="highlight">Quiz</span> 👑</h2>
+    <p>Question: Is website ki sabse special person kaun hai?</p>
+    <div class="options">
+      <button class="option" onclick="quiz(false)">Subhan 😂</button>
+      <button class="option" onclick="quiz(true)">Nazmeen 💗</button>
+      <button class="option" onclick="quiz(false)">Koi aur</button>
+    </div>
+    <div class="result" id="quizResult"></div>
+    <div id="nextSlot"></div>
+  </div>
+  `,
+
+  /* STEP 7 */
+
+  `
+  <div class="center">
+    <div class="eyebrow">A tiny challenge</div>
+    <h2>Heart <span class="highlight">Catcher</span> 💗</h2>
+    <p>Heart ko tap karo aur apna score badhao. 5 hearts collect karne hain!</p>
+    <div class="game-area">
+      <h2 id="score">Score: 0 / 5</h2>
+      <div class="heart-target" onclick="catchHeart()">💖</div>
+      <p id="gameMessage">Chalo shuru karo!</p>
+    </div>
+    <div id="nextSlot"></div>
+  </div>
+  `,
+
+  /* STEP 8 */
+
+  `
+  <div class="center">
+    <div class="eyebrow">Fate has something to say</div>
+    <h2>Love <span class="highlight">Roulette</span> 🎡</h2>
+    <p>Button dabao aur dekho tumhare liye aaj ka special message kya hai.</p>
+    <div class="big-heart">💞</div>
+    <button class="btn" onclick="roulette()">SPIN THE LOVE 💗</button>
+    <div class="result" id="rouletteResult"></div>
+    <div id="nextSlot"></div>
+  </div>
+  `,
+
+  /* STEP 9 */
+
+  `
+  <div class="center">
+    <div class="eyebrow">A surprise is waiting</div>
+    <h2>Mystery <span class="highlight">Gift</span> 🎁</h2>
+    <p>Madam, aapka surprise ready hai. Gift open karne ke liye neeche click karo!</p>
+    <div class="gift" onclick="openGift()" id="gift">🎁</div>
+    <div class="result" id="giftResult"></div>
+    <div id="nextSlot"></div>
+  </div>
+  `,
+
+  /* STEP 10 — GALLERY */
+
+  `
+  <div class="gallery-page">
+
+    <div class="gallery-topline">
+      <span>SUBHAN PRESENTS</span>
+      <span>THE NAZMEEN EDITION · 2026</span>
+    </div>
+
+    <div class="gallery-intro">
+      <div class="eyebrow">A little spotlight on someone special</div>
+      <h2 class="gallery-title">HER OWN <span>UNIVERSE.</span></h2>
+      <p class="gallery-description">
+        Kuch log apni alag hi pehchaan rakhte hain.
+        Ye page unhi mein se ek ke naam —
+        Nazmeen, just the way she is. 💗
+      </p>
+    </div>
+
+    <div class="hero-photo" onclick="openPhoto(0)">
+      <img src="Nazmeen_photos/n1.jpg.jpg"
+        alt="Nazmeen photo 1"
+        onerror="this.style.opacity='0.15';this.alt='Photo load nahi hui';">
+      <div class="hero-photo-info">
+        <div>
+          <span>THE COVER PORTRAIT</span>
+          <h3>NAZMEEN.</h3>
+        </div>
+        <div class="hero-number">01 / 06</div>
+      </div>
+    </div>
+
+    <div class="gallery-section-heading">
+      <h3>THE PHOTO COLLECTION</h3>
+      <span>01 — 06</span>
+    </div>
+
+    <div class="editorial-grid">
+
+      <div class="editorial-column">
+
+        <div>
+          <div class="editorial-photo photo-tall" onclick="openPhoto(1)">
+            <img src="Nazmeen_photos/n2.jpg.jpg" alt="Nazmeen photo 2">
+          </div>
+          <div class="editorial-note">
+            <span>NAZMEEN EDITION</span><span>02</span>
+          </div>
+        </div>
+
+        <div>
+          <div class="editorial-photo photo-wide" onclick="openPhoto(3)">
+            <img src="Nazmeen_photos/n4.jpg.jpg" alt="Nazmeen photo 4">
+          </div>
+          <div class="editorial-note">
+            <span>THE COLLECTION</span><span>04</span>
+          </div>
+        </div>
+
+        <div>
+          <div class="editorial-photo photo-short" onclick="openPhoto(5)">
+            <img src="Nazmeen_photos/n6.jpg.jpg" alt="Nazmeen photo 6">
+          </div>
+          <div class="editorial-note">
+            <span>JUST HER</span><span>06</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="editorial-column">
+
+        <div>
+          <div class="editorial-photo photo-medium" onclick="openPhoto(2)">
+            <img src="Nazmeen_photos/n3.jpg.jpg" alt="Nazmeen photo 3">
+          </div>
+          <div class="editorial-note">
+            <span>THE NAZMEEN EDIT</span><span>03</span>
+          </div>
+        </div>
+
+        <div>
+          <div class="editorial-photo photo-tall" onclick="openPhoto(4)">
+            <img src="Nazmeen_photos/n5.jpg.jpg" alt="Nazmeen photo 5">
+          </div>
+          <div class="editorial-note">
+            <span>ONE OF A KIND</span><span>05</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="gallery-divider"></div>
+
+    <div class="gallery-closing">
+      <div class="closing-mark">✦</div>
+      <h3>Dooriyan apni jagah, <span>rishta apni jagah.</span></h3>
+      <p>
+        Bachpan se saath na reh paaye, toh kya hua?
+        Tum meri behen ho aur ye baat hamesha special rahegi.
+        Hamesha khush rehna, Nazmeen. Apne dreams follow karna
+        aur apni smile kabhi mat khona. 💗
+      </p>
+      <div class="gallery-signature">WITH LOVE — SUBHAN</div>
+    </div>
+
+    <!-- VOICE NOTE AFTER ALL PHOTOS AND CLOSING MESSAGE -->
+
+    <div class="voice-note-box" id="voiceNoteBox">
+      <div class="voice-icon">🎙️💗</div>
+      <h3>Ek last message, Nazmeen...</h3>
+      <p>
+        Photos toh dekh liye madam.
+        Ab tumhare liye ek chhota sa voice message hai.
+        Isse zaroor sunna! 💗
+      </p>
+
+      <audio id="voiceNote" controls preload="auto">
+        <source src="vn.mp4" type="audio/mp4">
+        Your browser does not support audio.
+      </audio>
+
+      <div class="voice-status" id="voiceStatus">
+        Voice note ready. Play dabakar sun sakti ho. 💗
+      </div>
+    </div>
+
+    <div class="center">
+      <button class="btn" onclick="restart()">RESTART JOURNEY ↻</button>
+    </div>
+
+  </div>
+  `
+
+  ];
+
+  stopVoiceNote();
+
+  content.innerHTML=pages[step];
+  stepComplete=false;
+
+  if(step===9) {
+    setTrack("gallery",musicEnabled);
+    setupVoiceNote();
+  } else {
+    if(currentTrack!=="journey") {
+      setTrack("journey",musicEnabled);
+    }
+  }
+}
+
+/* STEP 3 */
+
+function mood(type) {
+  const messages={
+    happy:"Wahhh! Aise hi haste rehna. Tumhari khushi sabse important hai! 💗",
+    angry:"Arre madam! Thoda relax karo. Aaj gusse ko chhutti de do 😂",
+    sad:"Koi baat nahi. Har din same nahi hota. Tumhare liye achhe din bhi aayenge. 💗",
+    sleepy:"Madam ko neend aa rahi hai! Chalo aaj thoda aaram bhi zaroori hai 😂"
+  };
+
+  showResult("moodResult",messages[type]);
+  unlockNext("NEXT STEP ✨");
+}
+
+/* STEP 4 */
+
+const compliments=[
+  "Tumhari smile ka koi competition nahi! 💗",
+  "Tumhari personality mein kuch alag hi baat hai.",
+  "Tum jaisi ho, waise hi special ho.",
+  "Tumhari presence se normal moments bhi memorable ban jaate hain.",
+  "Queen ho tum, aur ye title tum par suit karta hai! 👑"
+];
+
+function compliment() {
+  const message=compliments[Math.floor(Math.random()*compliments.length)];
+  showResult("complimentResult",message);
+  unlockNext("NEXT STEP ✨");
+}
+
+/* STEP 5 */
+
+const battleQuestions=[
+  {
+    question:"Q1. Is website ka asli boss kaun hai?",
+    options:["Subhan 😎","Nazmeen 👑"],
+    answers:[
+      "Haan haan, website banayi Subhan ne... lekin boss toh Nazmeen hi hai! 😂",
+      "Bilkul sahi! Boss lady ka title tumhara hi hai. 👑"
+    ]
+  },
+  {
+    question:"Q2. Agar Subhan message kare toh reply kab aayega?",
+    options:["Turant 😂","Apne mood ke hisaab se 😌"],
+    answers:[
+      "Itni jaldi reply? Ye toh miracle ho gaya! 😂",
+      "Hahaha! Madam ka mood aur timing dono unpredictable hain. 😂"
+    ]
+  },
+  {
+    question:"Q3. Is sibling battle ka final winner kaun?",
+    options:["Subhan 🏆","Nazmeen 👑"],
+    answers:[
+      "Subhan ko winner banna tha... lekin decision committee ne reject kar diya! 😂",
+      "Congratulations! Expected winner ne trophy le li. 👑💗"
+    ]
+  }
+];
+
+let battleIndex=0;
+
+function answerBattle(choice) {
+  const result=document.getElementById("battleResult");
+  const question=battleQuestions[battleIndex];
+
+  result.style.display="block";
+  result.textContent=question.answers[choice];
+
+  document.querySelectorAll("#battleOptions button").forEach(btn=>{
+    btn.disabled=true;
+  });
+
+  if(battleIndex<battleQuestions.length-1) {
+    const nextButton=document.createElement("button");
+    nextButton.className="btn";
+    nextButton.textContent="NEXT QUESTION →";
+    nextButton.onclick=nextBattleQuestion;
+    result.appendChild(document.createElement("br"));
+    result.appendChild(nextButton);
+  } else {
+    const finishButton=document.createElement("button");
+    finishButton.className="btn";
+    finishButton.textContent="BATTLE COMPLETE 🏆";
+    finishButton.onclick=finishBattle;
+    result.appendChild(document.createElement("br"));
+    result.appendChild(finishButton);
+  }
+}
+
+function nextBattleQuestion() {
+  battleIndex++;
+  const question=battleQuestions[battleIndex];
+
+  document.getElementById("battleQuestion").textContent=question.question;
+
+  document.getElementById("battleOptions").innerHTML=
+    question.options.map((option,index)=>
+      `<button onclick="answerBattle(${index})">${option}</button>`
+    ).join("");
+
+  const result=document.getElementById("battleResult");
+  result.style.display="none";
+  result.textContent="";
+}
+
+function finishBattle() {
+  document.getElementById("battleQuestion").textContent=
+    "BATTLE RESULT: NAZMEEN WINS! 👑";
+
+  document.getElementById("battleOptions").innerHTML="";
+
+  const result=document.getElementById("battleResult");
+  result.style.display="block";
+  result.innerHTML=
+    "Subhan ki taraf se official announcement: Nazmeen ko trophy de di jaati hai. Ab khush? 😂💗";
+
+  unlockNext("NEXT SURPRISE ✨");
+}
+
+/* STEP 6 */
+
+function quiz(correct) {
+  showResult(
+    "quizResult",
+    correct
+      ?"Bilkul sahi! Is website ki Queen sirf Nazmeen hai! 👑💗"
+      :"Galat jawab! Ek baar phir socho madam 😂"
+  );
+
+  if(correct) unlockNext("NEXT STEP 💗");
+}
+
+/* STEP 7 */
+
+let score=0;
+
+function catchHeart() {
+  if(score>=5) return;
+
+  score++;
+
+  document.getElementById("score").textContent=`Score: ${score} / 5`;
+
+  document.getElementById("gameMessage").textContent=
+    score===5
+      ?"Yayyy! Challenge complete. Tum jeet gayi! 💗"
+      :"Ek aur heart collect karo! 💖";
+
+  if(score===5) unlockNext("NEXT STEP 💗");
+}
+
+/* STEP 8 */
+
+function roulette() {
+  const messages=[
+    "Aaj ka message: Tumhari smile priceless hai. 💗",
+    "Universe ka kehna hai: Keep shining, Queen! ✨",
+    "Aaj tumhare naam ek extra compliment!",
+    "Special reminder: Apne dreams kabhi mat chhodna.",
+    "Tumhari entry se har moment thoda special ho jaata hai!"
+  ];
+
+  showResult(
+    "rouletteResult",
+    messages[Math.floor(Math.random()*messages.length)]
+  );
+
+  unlockNext("NEXT STEP 💗");
+}
+
+/* STEP 9 */
+
+function openGift() {
+  document.getElementById("gift").textContent="💝";
+
+  showResult(
+    "giftResult",
+    "Surprise! 🎉 Tumhara gift hai ek reminder: Tum bahut special ho. Hamesha khush raho aur apne dreams follow karo! 💗"
+  );
+
+  unlockNext("FINAL STEP 💗");
+}
+
+/* COMMON RESULT */
+
+function showResult(id,message) {
+  const box=document.getElementById(id);
+  box.style.display="block";
+  box.textContent=message;
+}
+
+/* PHOTO VIEWER */
+
+function openPhoto(index) {
+  currentPhoto=index;
+
+  const lightbox=document.getElementById("lightbox");
+  const image=document.getElementById("largePhoto");
+
+  image.src=photos[currentPhoto];
+
+  document.getElementById("photoCounter").textContent=
+    `${String(currentPhoto+1).padStart(2,"0")} / 06`;
+
+  lightbox.classList.add("active");
+  document.body.style.overflow="hidden";
+}
+
+function changePhoto(direction,event) {
+  if(event) event.stopPropagation();
+
+  currentPhoto+=direction;
+
+  if(currentPhoto<0) currentPhoto=photos.length-1;
+  if(currentPhoto>=photos.length) currentPhoto=0;
+
+  document.getElementById("largePhoto").src=photos[currentPhoto];
+
+  document.getElementById("photoCounter").textContent=
+    `${String(currentPhoto+1).padStart(2,"0")} / 06`;
+}
+
+function closePhoto(event) {
+  if(event) event.stopPropagation();
+
+  document.getElementById("lightbox").classList.remove("active");
+  document.getElementById("largePhoto").src="";
+  document.body.style.overflow="";
+}
+
+/* RESTART */
+
+function restart() {
+  stopVoiceNote();
+
+  step=0;
+  score=0;
+  battleIndex=0;
+  stepComplete=false;
+
+  currentTrack="";
+  setTrack("journey",musicEnabled);
+  render();
+
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+/* KEYBOARD CONTROLS */
+
+document.addEventListener("keydown",function(event) {
+  const lightbox=document.getElementById("lightbox");
+
+  if(!lightbox.classList.contains("active")) return;
+
+  if(event.key==="Escape") closePhoto();
+  if(event.key==="ArrowRight") changePhoto(1);
+  if(event.key==="ArrowLeft") changePhoto(-1);
+});
+
+/* START WEBSITE */
+
+setTrack("journey",false);
+render();
+
+</script>
+</body>
+</html>
